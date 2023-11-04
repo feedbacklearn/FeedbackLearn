@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/Feedbacklearnlogo.jpg"/>
+    <title>Feedback Form</title>
+</head>
+
+<header class="text-gray-600 body-font">
+  <nav class="bg-gray-100 p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <img class="object-cover object-center rounded w-10 h-10" alt="logo" src="images/Feedbacklearnlogo.jpg">
+        <div class="text-2xl font-bold text-gray-900">
+            FeedbackLearn
+        </div>
+
+        <nav class="md:ml-auto md:m1-4 md:py-1 md:pl-4 md:border-gray-400 flex flex-wrap items-center text-base justify-center">
+            <div class="container mx-auto flex justify-between items-center">
+            <ul class="hidden lg:flex space-x-4">
+              <li><a href="home.html"class="mr-5 hover:text-gray-400 text-gray-900">Home</a></li>
+              <li><a href="AboutUs.html" class="mr-5 hover:text-gray-400 text-gray-900">About Us</a></li>
+              <li><a href="ContactUs.html" class="mr-5 hover:text-gray-400 text-gray-900">Contact Us</a></li>
+              <li><a href="Privacypolicy.html" class="mr-2 hover:text-gray-400 text-gray-900">Privacy Policy</a></li>
+              <li><a href="termsandcondition.html" class="mr-2 hover:text-gray-400 text-gray-900">Terms & Condition</a>
+            </ul>
+            
+        </div>
+          </nav>
+        <!-- Move the mobile menu to the top-right corner -->
+        <div class="lg:hidden">
+            <button class="text-black text-xl focus:outline-none" id="mobile-menu-button">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+    <!-- Mobile Menu (visible on screens smaller than "lg") -->
+    <ul class="lg:hidden space-y-2 mt-4" id="mobile-menu-list">
+        <li><a href="home.html" class="text-gray-900">Home</a></li>
+        <li><a href="AboutUs.html" class="text-gray-900">About Us</a></li>
+        <li><a href="ContactUs.html" class="text-gray-900">Contact Us</a></li>
+        <li><a href="Privacypolicy.html" class="text-gray-900">Privacy Policy</a></li>
+        <li><a href="termsandcondition.html" class="text-gray-900">Terms & Condition</a>
+    </ul>
+</nav>
+  </header>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenuList = document.getElementById('mobile-menu-list');
+
+        // Initially hide the mobile menu
+        mobileMenuList.classList.add('hidden');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenuList.classList.toggle('hidden');
+        });
+    });
+
+    setTimeout(function() {
+            const toploader = document.getElementById('toploader');
+            toploader.style.display = 'none';
+        }, 2000); // Change the time as needed
+  </script>
+  <style>
+    .alert{
+        width: 100%;
+        background: rgb(0,255, 106);
+        padding: 10px 20px;
+        border-radius:5px;
+        text-align: center;
+        font-size:18px;
+        font-weight: 900;
+        display: none;
+
+        
+    }
+    @keyframes moveToploader {
+            0% { left: 0; }
+            100% { left: 100%; }
+        }
+
+        #toploader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: #004370;
+            animation: moveToploader 6s linear infinite;
+        }
+  </style>
+
+  
+
+<body class="bg-gray-200">
+    <div id="toploader"></div><!--toploader single line code-->
+    <div class="container mx-auto mt-8">
+
+        <div id="feedbackAlert" class="fixed top-4 right-4 bg-green-500 text-white p-4 rounded-md shadow-lg transition-opacity duration-300 ease-in-out opacity-0 pointer-events-none">
+            Feedback successfully uploaded
+        </div>
+    
+        <script>
+            // JavaScript to show the alert
+            function showFeedbackAlert() {
+                var alert = document.getElementById("feedbackAlert");
+                alert.style.opacity = "1";
+    
+                // Hide the alert after 3 seconds (3000 milliseconds)
+                setTimeout(function() {
+                    alert.style.opacity = "0";
+                }, 3000);
+            }
+    
+            // Call the showFeedbackAlert function when you want to display the alert
+            // For example, you can call it after successfully uploading feedback
+            // showFeedbackAlert();
+        </script>
+
+        <div class="bg-white p-8 rounded-lg shadow-md">
+            <h2 class="text-4xl font-extrabold text-blue-700 mb-4">Feedback Form</h2>
+            <div class="alert text-gray-900">Your message is successfully sent!!</div>
+            <form action="#" method="POST" id="feedbackForm">
+                
+                <div class="mb-4">
+                    <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name:</label>
+                    <input type="text" id="name" name="name" required oninvalid="setCustomValidity('Enter your name')" oninput="setCustomValidity('')" placeholder="Enter your name" class="w-full p-2 border border-gray-300 rounded">
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email:</label>
+                    <input type="email" id="email" name="email" required oninvalid="setCustomValidity('Enter your email')" oninput="setCustomValidity('')" placeholder="Enter your email" class="w-full p-2 border border-gray-300 rounded">
+                </div>
+                <div class="mb-4">
+                    <label for="age" class="block text-gray-700 text-sm font-bold mb-2">Age:</label>
+                    <input type="number" id="age" name="age" required oninvalid="setCustomValidity('Enter your age')" oninput="setCustomValidity('')"placeholder="Enter your age" class="w-full p-2 border border-gray-300 rounded">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Gender:</label>
+
+                    <input type="radio" id="male" name="gender" value="male" class="mr-2">
+                    <label for="male" class="mr-4">Male</label>
+
+                    <input type="radio" id="female" name="gender" value="female" class="mr-2">
+                    <label for="female" class="mr-4">Female</label>
+
+                    <input type="radio" id="others" name="gender" value="others" class="mr-2">
+                    <label for="Others">Others</label>
+                </div>
+                <div class="mb-4">
+                    <label for="phone" class="block text-gray-700 text-sm font-bold mb-2">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" required oninvalid="setCustomValidity('Enter your phone')" oninput="setCustomValidity('')" placeholder="Enter your phone number" class="w-full p-2 border border-gray-300 rounded">
+                </div>
+                <div class="mb-4">
+                    <label for="city" class="block text-gray-700 text-sm font-bold mb-2">City:</label>
+                    <input type="text" id="city" name="city" required oninvalid="setCustomValidity('Enter your city')" oninput="setCustomValidity('')" placeholder="Enter your city" class="w-full p-2 border border-gray-300 rounded">
+                </div>
+                <div class="mb-4">
+                    <label for="state" class="block text-gray-700 text-sm font-bold mb-2">State:</label>
+                    <input type="text" id="state" name="state" required oninvalid="setCustomValidity('Enter your State')" oninput="setCustomValidity('')" placeholder="Enter your state" class="w-full p-2 border border-gray-300 rounded">
+                </div>
+                <div class="mb-4">
+                    <label for="country" class="block text-gray-700 text-sm font-bold mb-2">Country:</label>
+                    <input type="text" id="country" name="country" required oninvalid="setCustomValidity('Enter your country')" oninput="setCustomValidity('')"placeholder="Enter your country" class="w-full p-2 border border-gray-300 rounded">
+                </div>
+                <div class="mb-4">
+                    <label for="mobilebrand" class="block text-gray-700 text-sm font-bold mb-2">Mobile Brand Name:</label>
+                    <input type="text" id="mobilebrand" name="mobile-brand" required oninvalid="setCustomValidity('Enter your Mobile Brand')" oninput="setCustomValidity('')"placeholder="Enter your mobile brand" class="w-full p-2 border border-gray-300 rounded">
+                </div>
+                <div class="mb-4">
+                    <label for="influencer" class="block text-gray-700 text-sm font-bold mb-2">Influencer:</label>
+                    <input type="text" id="influencer" name="influencer" required oninvalid="setCustomValidity('Enter your Influencer and if not then type none')" oninput="setCustomValidity('')"placeholder="Enter an influencer name" class="w-full p-2 border border-gray-300 rounded">
+                </div>
+                <div class="mb-4">
+                    <label for="model-name" class="block text-gray-700 text-sm font-bold mb-2">Model Name:</label>
+                    <input type="text" id="modelname" name="model-name" required oninvalid="setCustomValidity('Enter your model name')" oninput="setCustomValidity('')"placeholder="Enter the model name" class="w-full p-2 border border-gray-300 rounded">
+                </div>
+
+                <div class="mb-4">
+                    <label for="video" class="block text-gray-700 text-sm font-bold mb-2">Upload Video:</label>
+                    <input type="file" id="video" name="video" accept="video/*" class="w-full p-2 border border-gray-300 rounded">
+                    <p class="text-gray-500 text-sm">Please upload your video feedback (if applicable).</p>
+                </div>
+
+
+                <h2 class="text-4xl font-extrabold text-blue-700 mb-4">Feedback Questions</h2>
+
+
+
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-5">On a scale of 1 to 5, how do you rate the design of this mobile brand's products?</label>
+
+                    <input type="radio" id="a1" name="q1" value="a1" class="mr-2">
+                    <label for="male" class="mr-20">1</label>
+
+                    <input type="radio" id="a2" name="q1" value="a2" class="mr-2">
+                    <label for="female" class="mr-20">2</label>
+
+                    <input type="radio" id="a3" name="q1" value="a3" class="mr-2">
+                    <label for="Others"class="mr-20">3</label>
+
+                    <input type="radio" id="a4" name="q1" value="a4" class="mr-2">
+                    <label for="female" class="mr-20">4</label>
+
+                    <input type="radio" id="a5" name="q1" value="a5" class="mr-2">
+                    <label for="female" class="mr-20">5</label>
+                </div>
+
+
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-5">How satisfied are you with the overall performance and speed of this mobile brand's devices?</label>
+
+                    <input type="radio" id="b1" name="q2" value="b1" class="mr-2">
+                    <label for="male" class="mr-20">1</label>
+
+                    <input type="radio" id="b2" name="q2" value="b2" class="mr-2">
+                    <label for="female" class="mr-20">2</label>
+
+                    <input type="radio" id="b3" name="q2" value="b3" class="mr-2">
+                    <label for="Others"class="mr-20">3</label>
+
+                    <input type="radio" id="b4" name="q2" value="b4" class="mr-2">
+                    <label for="female" class="mr-20">4</label>
+
+                    <input type="radio" id="b5" name="q2" value="b5" class="mr-2">
+                    <label for="female" class="mr-20">5</label>
+                </div>
+
+
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-5">Rate the battery life of this mobile brand's devices.</label>
+
+                    <input type="radio" id="c1" name="q3" value="c1" class="mr-2">
+                    <label for="male" class="mr-20">1</label>
+
+                    <input type="radio" id="c2" name="q3" value="c2" class="mr-2">
+                    <label for="female" class="mr-20">2</label>
+
+                    <input type="radio" id="c3" name="q3" value="c3" class="mr-2">
+                    <label for="Others"class="mr-20">3</label>
+
+                    <input type="radio" id="c4" name="q3" value="c4" class="mr-2">
+                    <label for="female" class="mr-20">4</label>
+
+                    <input type="radio" id="c5" name="q3" value="c5" class="mr-2">
+                    <label for="female" class="mr-20">5</label>
+                </div>
+
+
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-5">How would you rate the camera quality and features offered by this mobile brand?</label>
+
+                    <input type="radio" id="d1" name="q4" value="d1" class="mr-2">
+                    <label for="male" class="mr-20">1</label>
+
+                    <input type="radio" id="d2" name="q4" value="d2" class="mr-2">
+                    <label for="female" class="mr-20">2</label>
+
+                    <input type="radio" id="d3" name="q4" value="d3" class="mr-2">
+                    <label for="Others"class="mr-20">3</label>
+
+                    <input type="radio" id="d4" name="q4" value="d4" class="mr-2">
+                    <label for="female" class="mr-20">4</label>
+
+                    <input type="radio" id="d5" name="q4" value="d5" class="mr-2">
+                    <label for="female" class="mr-20">5</label>
+                </div>
+
+
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-5">Is this mobile brand's interface easy to use?</label>
+
+                    <input type="radio" id="e1" name="q5" value="e1" class="mr-2">
+                    <label for="male" class="mr-20">1</label>
+
+                    <input type="radio" id="e2" name="q5" value="e2" class="mr-2">
+                    <label for="female" class="mr-20">2</label>
+
+                    <input type="radio" id="e3" name="q5" value="e3" class="mr-2">
+                    <label for="Others"class="mr-20">3</label>
+
+                    <input type="radio" id="e4" name="q5" value="e4" class="mr-2">
+                    <label for="female" class="mr-20">4</label>
+
+                    <input type="radio" id="e5" name="q5" value="e5" class="mr-2">
+                    <label for="female" class="mr-20">5</label>
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-5">Rate the build quality and durability of this mobile brand's products.</label>
+
+                    <input type="radio" id="f1" name="q6" value="f1" class="mr-2">
+                    <label for="male" class="mr-20">1</label>
+
+                    <input type="radio" id="f2" name="q6" value="f2" class="mr-2">
+                    <label for="female" class="mr-20">2</label>
+
+                    <input type="radio" id="f3" name="q6" value="f3" class="mr-2">
+                    <label for="Others"class="mr-20">3</label>
+
+                    <input type="radio" id="f4" name="q6" value="f4" class="mr-2">
+                    <label for="female" class="mr-20">4</label>
+
+                    <input type="radio" id="f5" name="q6" value="f5" class="mr-2">
+                    <label for="female" class="mr-20">5</label>
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-5">How satisfied are you with the value you receive for the price paid for this mobile brand's devices?</label>
+
+                    <input type="radio" id="g1" name="q7" value="g1" class="mr-2">
+                    <label for="male" class="mr-20">1</label>
+
+                    <input type="radio" id="g2" name="q7" value="g2" class="mr-2">
+                    <label for="female" class="mr-20">2</label>
+
+                    <input type="radio" id="g3" name="q7" value="g3" class="mr-2">
+                    <label for="Others"class="mr-20">3</label>
+
+                    <input type="radio" id="g4" name="q7" value="g4" class="mr-2">
+                    <label for="female" class="mr-20">4</label>
+
+                    <input type="radio" id="g5" name="q7" value="g5" class="mr-2">
+                    <label for="female" class="mr-20">5</label>
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-5">How trustworthy do you find this mobile brand?</label>
+
+                    <input type="radio" id="h1" name="q8" value="h1" class="mr-2">
+                    <label for="male" class="mr-20">1</label>
+
+                    <input type="radio" id="h2" name="q8" value="h2" class="mr-2">
+                    <label for="female" class="mr-20">2</label>
+
+                    <input type="radio" id="h3" name="q8" value="h3" class="mr-2">
+                    <label for="Others"class="mr-20">3</label>
+
+                    <input type="radio" id="h4" name="q8" value="h4" class="mr-2">
+                    <label for="female" class="mr-20">4</label>
+
+                    <input type="radio" id="h5" name="q8" value="h5" class="mr-2">
+                    <label for="female" class="mr-20">5</label>
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-5">Rate the quality and responsiveness of the customer support provided by this mobile brand.</label>
+
+                    <input type="radio" id="i1" name="w1" value="i1" class="mr-2">
+                    <label for="male" class="mr-20">1</label>
+
+                    <input type="radio" id="i2" name="w1" value="i2" class="mr-2">
+                    <label for="female" class="mr-20">2</label>
+
+                    <input type="radio" id="i3" name="w1" value="i3" class="mr-2">
+                    <label for="Others"class="mr-20">3</label>
+
+                    <input type="radio" id="i4" name="w1" value="i4" class="mr-2">
+                    <label for="female" class="mr-20">4</label>
+
+                    <input type="radio" id="i5" name="w1" value="i5" class="mr-2">
+                    <label for="female" class="mr-20">5</label>
+                </div>
+
+                
+
+                
+                
+
+                <button type="submit"class="bg-gray-900 text-white font-bold py-2 px-4 rounded hover:bg-gray-700">Upload Feedback</button>
+                <div class="alert text-gray-900">Your message is successfully sent!!</div>
+            </form>
+        </div>
+    </div>
+
+
+
+<!-- Your HTML form -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+    <script src="./mail.js"></script>
+
+
+    <footer class="text-gray-600 body-font">
+        <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+          <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+            <img class="object-cover object-center rounded w-10 h-10" alt="logo" src="images/Feedbacklearnlogo.jpg">
+            <span class="ml-3 text-xl" >FeedbackLearn</span>
+          </a>
+          <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2023 FeedbackLearn —
+            <a href="" class="text-gray-600 ml-1" rel="noopener noreferrer" target="_blank">@FeedbackLearn</a>
+          </p>
+          <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+            <a class="text-gray-500">
+              <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+              </svg>
+            </a>
+            <a class="ml-3 text-gray-500">
+              <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+              </svg>
+            </a>
+            <a class="ml-3 text-gray-500">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+              </svg>
+            </a>
+            <a class="ml-3 text-gray-500">
+              <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+                <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+                <circle cx="4" cy="4" r="2" stroke="none"></circle>
+              </svg>
+            </a>
+          </span>
+        </div>
+      </footer>
+
+</body>
+</html>
